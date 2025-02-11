@@ -1,2 +1,17 @@
-node_modules
+# Ignore built files
+dist/
+
+# Ignore node_modules
+node_modules/
+
+# Ignore pnpm store directory
+.pnpm-store/
+
+# Ignore log files
+*.log
+
+# Ignore environment files
+.env
+
+# Ignore github actions files
 .github
