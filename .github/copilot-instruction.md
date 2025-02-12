@@ -99,8 +99,6 @@ const UserSchema = z.object({
   imageUrl: string
   creator: ObjectId (ref: User)
   attendees: [ObjectId] (ref: User)
-  capacity: number
-  isPublic: boolean
   createdAt: Date
   updatedAt: Date
 }
