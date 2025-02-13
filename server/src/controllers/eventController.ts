@@ -35,7 +35,7 @@ export const createEvent = async (req: Request, res: Response) => {
       date,
       location,
       image: imageUrl,
-      createdBy: req.user.id,
+      owner: req.user.id,
     });
 
     await newEvent.save();
@@ -122,11 +122,7 @@ export const deleteEvent = async (req: Request, res: Response) => {
       return res.status(404).json({ msg: "Event not found" });
     }
 
-    if (!req.user) {
-      return res.status(401).json({ msg: "User not authenticated" });
-    }
-
-    if (event.owner.toString() !== req.user.id) {
+    if (event.owner.toString() !== req.user?.id) { 
       return res.status(401).json({ msg: "User not authorized" });
     }
 

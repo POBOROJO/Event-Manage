@@ -1,108 +1,107 @@
 # Event Management Platform
 
-A full-stack event management solution with real-time capabilities and comprehensive event handling features.
+## Project Description
+
+This is a full-stack event management platform that allows users to create, manage, and view events. The platform includes user authentication, event creation and management tools, and real-time updates for attendees.
 
 ## Features
 
-### User Management
-
-- User registration and authentication
-- JWT-based secure login
-- Guest access with limited features
-- Role-based access control
-
-### Event Operations
-
-- Create, read, update, and delete events
-- Advanced event filtering and search
-- Real-time attendee tracking
-- Category-based organization
-
-### Technical Highlights
-
-- Real-time updates using WebSockets
-- Responsive design for all devices
-- RESTful API architecture
-- Secure data management
-
-## Tech Stack
-
 ### Frontend
 
-- React.js
-- Tailwind CSS
-- Shadcn UI for components
-- Framer Motion for animations
-- Socket.io-client
-- Zustand for state management
+-   **User Authentication:** Users can register and log in. Guest login is also available with limited features.
+-   **Event Dashboard:** Displays a list of upcoming and past events with filtering options.
+-   **Event Creation:** Form to create an event with fields like event name, description, date/time, and more.
+-   **Real-Time Attendee List:** Shows the number of attendees for each event in real-time.
+-   **Responsive Design:** The platform works seamlessly on all devices.
 
 ### Backend
 
-- Node.js
-- Express.js
-- MongoDB
-- Socket.io
-- JWT authentication
+-   **Authentication API:** Uses JWT for secure authentication.
+-   **Event Management API:** CRUD operations for events with ownership restrictions.
+-   **Real-Time Updates:** Uses WebSockets for real-time updates.
+-   **Database:** Stores event and user data efficiently.
 
-## Getting Started
+## Technologies Used
 
-### Prerequisites
+### Frontend
 
-- Node.js (v14 or higher)
-- MongoDB
-- npm or yarn or pnpm
+-   React.js
+-   Shadcn
+-   Framer Motion
+-   TypeScript
 
-### Installation
+### Backend
 
-1. Clone the repository
+-   Node.js
+-   Express
+-   TypeScript
 
-```bash
-git clone https://github.com/username/event-management.git
-```
+### Database
 
-2. Install dependencies
+-   MongoDB
 
-```bash
-# Install backend dependencies
-cd backend
-npm install or yarn install or pnpm install
+### Image Hosting
 
-# Install frontend dependencies
-cd ../frontend
-npm install or yarn install
-```
+-   Cloudinary
 
-3. Configure environment variables
+### Real-time Communication
 
-```bash
-# Create .env files in both frontend and backend directories
-cp .env.example .env
-```
+-   Socket.io
 
-4. Start the application
+## Setup Instructions
 
-```bash
-# Start backend
-cd backend
-pnpm run dev
+1.  **Clone the repository:**
 
-# Start frontend
-cd frontend
-npm start
-```
+    ```bash
+    git clone <repository-url>
+    cd event-management
+    ```
 
-## API Documentation
+2.  **Install dependencies:**
 
-Detailed API documentation is available at `/api/docs` after starting the server.
+    ```bash
+    cd client
+    npm install # or pnpm install or yarn install
+    cd ../server
+    npm install # or pnpm install or yarn install
+    ```
 
-## Contributing
+3.  **Set up environment variables:**
 
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Open a Pull Request
+    -   Create `.env` file in the `server` directory.
+    -   Add the following environment variables:
+
+        ```
+        MONGODB_URI=your_mongodb_connection_string
+        JWT_SECRET=your_jwt_secret
+        CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+        CLOUDINARY_API_KEY=your_cloudinary_api_key
+        CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+        ```
+
+4.  **Run the application:**
+
+    ```bash
+    cd server
+    npm run dev # or pnpm run dev or yarn run dev
+    ```
+
+    ```bash
+    cd client
+    npm run dev # or pnpm run dev or yarn run dev
+    ```
+
+## Contribution Guidelines
+
+Contributions are welcome! Please follow these steps:
+
+1.  Fork the repository.
+2.  Create a new branch.
+3.  Make your changes.
+4.  Commit your changes with a descriptive message.
+5.  Push to your forked repository.
+6.  Create a pull request.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+[MIT](LICENSE)
