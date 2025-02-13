@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import errorHandler from './middleware/errorHandler';
+import router from './routes/authRoutes';
 dotenv.config();
 
 const app= express();
@@ -22,6 +23,8 @@ app.use(cookieParser());
 app.get('/health', (req, res) => {
     res.send('Hello World!');
 });
+
+app.use('/auth', router);
 
 app.use(errorHandler);
 

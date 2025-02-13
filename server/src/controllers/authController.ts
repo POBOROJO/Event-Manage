@@ -9,7 +9,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 //Register
-export const register = async (req: Request, res: Response) => {
+export const registerHandler = async (req: Request, res: Response) => {
   const validation = signUpValidation.safeParse(req.body);
   if (!validation.success) {
     return res.status(400).json(validation.error.errors);
@@ -44,22 +44,17 @@ export const register = async (req: Request, res: Response) => {
       },
     };
 
-    jwt.sign(
-      payload,
-      process.env.JWT_SECRET!,
-      { expiresIn: "1d" },
-      (err, token) => {
-        if (err) throw err;
-        res.json({ token });
-      }
-    );
+    jwt.sign(payload, process.env.JWT_SECRET!, { expiresIn: "1d" }, (err) => {
+      if (err) throw err;
+      res.json({ message: "User register successfully" });
+    });
   } catch (error) {
     res.status(500).send("Server error");
   }
 };
 
 //Login
-export const login = async (req: Request, res: Response) => {
+export const loginHandler = async (req: Request, res: Response) => {
   const validation = signInValidation.safeParse(req.body);
   if (!validation.success) {
     return res.status(400).json(validation.error.errors);
@@ -72,7 +67,9 @@ export const login = async (req: Request, res: Response) => {
 
     if (!user) {
       return res.status(400).json({
-        msg: "Invalid credentials",
+        error: "Invalid credentials",
+        message:
+          "User not registered. Please register before attempting to login.",
       });
     }
 
@@ -91,15 +88,10 @@ export const login = async (req: Request, res: Response) => {
       },
     };
 
-    jwt.sign(
-      payload,
-      process.env.JWT_SECRET!,
-      { expiresIn: "1d" },
-      (err, token) => {
-        if (err) throw err;
-        res.json({ token });
-      }
-    );
+    jwt.sign(payload, process.env.JWT_SECRET!, { expiresIn: "1d" }, (err) => {
+      if (err) throw err;
+      res.json({ message: "Logged in successfully" });
+    });
   } catch (error: any) {
     console.error("Error:", error.message);
     return res.status(500).send("Server error");
@@ -107,7 +99,7 @@ export const login = async (req: Request, res: Response) => {
 };
 
 //Guest Login
-export const guestLogin = async (req: Request, res: Response) => {
+export const guestLoginHandler = async (req: Request, res: Response) => {
   const validation = signInValidation.safeParse(req.body);
   if (!validation.success) {
     return res.status(400).json(validation.error.errors);
@@ -119,19 +111,14 @@ export const guestLogin = async (req: Request, res: Response) => {
     },
   };
 
-  jwt.sign(
-    payload,
-    process.env.JWT_SECRET!,
-    { expiresIn: "1h" },
-    (err, token) => {
-      if (err) throw err;
-      res.json({ token });
-    }
-  );
+  jwt.sign(payload, process.env.JWT_SECRET!, { expiresIn: "1h" }, (err) => {
+    if (err) throw err;
+    res.json({ message: "Logged in successfully" });
+  });
 };
 
 //Logout
-export const logout = async (req: Request, res: Response) => {
+export const logoutHandler = async (req: Request, res: Response) => {
   res.clearCookie("token");
   res.status(200).json({ msg: "Logged out successfully" });
 };
