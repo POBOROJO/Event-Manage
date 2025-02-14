@@ -100,10 +100,6 @@ export const loginHandler = async (req: Request, res: Response) => {
 
 //Guest Login
 export const guestLoginHandler = async (req: Request, res: Response) => {
-  const validation = signInValidation.safeParse(req.body);
-  if (!validation.success) {
-    return res.status(400).json(validation.error.errors);
-  }
   const payload = {
     user: {
       id: null,
@@ -113,7 +109,7 @@ export const guestLoginHandler = async (req: Request, res: Response) => {
 
   jwt.sign(payload, process.env.JWT_SECRET!, { expiresIn: "1h" }, (err) => {
     if (err) throw err;
-    res.json({ message: "Logged in successfully" });
+    res.json({ message: "Guest logged in successfully" });
   });
 };
 

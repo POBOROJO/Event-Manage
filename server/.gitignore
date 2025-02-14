@@ -16,6 +16,6 @@ node_modules/
 # Ignore github actions files
 .github
 
-# context files
+# Context files
 code_context.txt
 code_context.sh
