@@ -13,9 +13,9 @@ node_modules/
 # Ignore environment files
 .env
 
-# Ignore github actions files
-.github
-
 # Context files
 code_context.txt
 code_context.sh
+
+#Include the github actions
+.github/

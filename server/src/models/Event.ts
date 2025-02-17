@@ -10,7 +10,7 @@ export interface IEvent extends Document {
   owner: Schema.Types.ObjectId;
 }
 
-const eventSchema: Schema<IEvent> = new mongoose.Schema({
+const EventSchema: Schema<IEvent> = new mongoose.Schema({
   name: { type: String, required: true },
   description: { type: String, required: true },
   date: { type: Date, required: true },
@@ -20,4 +20,4 @@ const eventSchema: Schema<IEvent> = new mongoose.Schema({
   owner: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
 });
 
-export default model("Event", eventSchema);
+export default model("Event", EventSchema);
